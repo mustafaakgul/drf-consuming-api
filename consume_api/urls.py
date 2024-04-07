@@ -67,4 +67,6 @@ urlpatterns = [
     path('decimal-test/<int:id>', views.decimal_test, name='decimal-test'),
     path('weather/', weather_.weather, name='weather'),
     path('infura-initial/', infura_.infura_initial, name='infura-initial'),
+    path('github/', views.index_github, name='index_github'),
+    path('github-library/', views.index_github_library, name='index_github_library'),
 ]

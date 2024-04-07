@@ -1,6 +1,6 @@
 from django.shortcuts import render
 import requests
-from .serializer import *
+from .serializers import *
 from .models import *
 
 def infura_initial(request):
