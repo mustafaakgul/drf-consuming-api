@@ -15,11 +15,32 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
+
 from core import views
+from weather import views as weather_
+from infura import views as infura_
 
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework import permissions
+
+from django.contrib.auth.models import User
+from rest_framework import routers, serializers, viewsets
+
+# # Serializers define the API representation.
+# class UserSerializer(serializers.HyperlinkedModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = ['url', 'username', 'email', 'is_staff']
+#
+# # ViewSets define the view behavior.
+# class UserViewSet(viewsets.ModelViewSet):
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
+#
+# # Routers provide an easy way of automatically determining the URL conf.
+# router = routers.DefaultRouter()
+# router.register(r'users', UserViewSet)
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -41,7 +62,9 @@ urlpatterns = [
     path('doc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     #re_path(r'api/(?P<version>[v1|v2]+)/', include('django_blog.apps.blog.rest_api.urls')),
     #re_path(r'api/(?P<version>[v1|v2]+)/', ),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
-    path('decimal-test/<int:id>', views.decimal_test, name='decimal_test'),
-    path('weather/', weather.views.weather, name='weather'),
+    path('decimal-test/<int:id>', views.decimal_test, name='decimal-test'),
+    path('weather/', weather_.weather, name='weather'),
+    path('infura-initial/', infura_.infura_initial, name='infura-initial'),
 ]
