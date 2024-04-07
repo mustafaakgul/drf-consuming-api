@@ -13,3 +13,4 @@
 * [Github]
 * [Infura]
 * [OpenWeatherMap]
+* [GeoIP]
