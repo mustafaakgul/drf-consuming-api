@@ -43,5 +43,5 @@ urlpatterns = [
     #re_path(r'api/(?P<version>[v1|v2]+)/', ),
 
     path('decimal-test/<int:id>', views.decimal_test, name='decimal_test'),
-
+    path('weather/', weather.views.weather, name='weather'),
 ]
